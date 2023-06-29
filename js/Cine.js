@@ -1,5 +1,5 @@
-
-/* 
+"use strict";
+/*
 class Cine{
     // 1-Atributos
     // private
@@ -23,4 +23,4 @@ class Cine{
     asignarAsientos(){
         
     }
-} */
+} */ 

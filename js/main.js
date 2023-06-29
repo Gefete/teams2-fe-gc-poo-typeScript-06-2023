@@ -1,3 +1,4 @@
+"use strict";
 let espectador = new Espectador();
 console.log(espectador);
 let espectador1 = new Espectador();
