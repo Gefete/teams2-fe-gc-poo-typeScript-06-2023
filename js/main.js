@@ -1,13 +1,17 @@
-"use strict";
-let espectador = new Espectador();
-console.log(espectador);
-let espectador1 = new Espectador();
-console.log(espectador1);
-let espectador2 = new Espectador();
-console.log(espectador2);
-let espectador3 = new Espectador();
-console.log(espectador3);
-let espectador4 = new Espectador();
-console.log(espectador4);
-let espectador5 = new Espectador();
-console.log(espectador5);
+let asientos = [];
+
+const crearAsientos = () => {
+  for (let i = 0; i < 8; i++) {
+    asientos[i] = [];
+    for (let j = 0; j < 9; j++) {
+      asientos[i][j] = {
+        "letra": String.fromCharCode(65 + j),
+        "fila": 8 - i,
+        "ocupado": false
+      };
+    }
+  }
+};
+
+crearAsientos();
+console.log(asientos);
