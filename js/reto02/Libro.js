@@ -1,8 +1,38 @@
 "use strict";
 class Libro {
-    // toString(): void{
-    //     console.log(this.titulo+" con "+this.ISBN+" creado por "+this.autor+" tiene "+this.paginas);
-    // }
+    constructor() {
+        this.ISBN = this.generarISBN();
+        this.titulo = this.generarTitulo();
+        this.autor = this.generarNombre();
+        this.n_pag = this.generarPaginas();
+    }
+    getISBN() {
+        return this.ISBN;
+    }
+    setISBN(ISBN) {
+        this.ISBN = ISBN;
+    }
+    getTitulo() {
+        return this.titulo;
+    }
+    setTitulo(titulo) {
+        this.titulo = titulo;
+    }
+    getAutor() {
+        return this.autor;
+    }
+    setAutor(autor) {
+        this.autor = autor;
+    }
+    getN_pag() {
+        return this.n_pag;
+    }
+    setN_pag(n_pag) {
+        this.n_pag = n_pag;
+    }
+    toString() {
+        console.log(this.titulo + " con " + this.ISBN + " creado por " + this.autor + " tiene " + this.n_pag);
+    }
     generarTitulo() {
         // Creo la variable que recogerá el título
         let titulo;
@@ -19,9 +49,9 @@ class Libro {
         let titulo_sustantivos2 = ["Casa", "Inteligencia", "Orquesta", "Jirafa", "Mesa", "Lámpara", "Cara", "Moto", "Radio", "Foto",
             "Camión", "Recuerdo", "Rebaño", "Perro", "Cura", "Fantasma", "Mapa", "Sistema", "Mundo", "Techo"];
         // Asigno a título un valor de cada uno de los arrays anteriormente establecidos para generar un título aleatorio
-        titulo = "" + titulo_articulos[Math.round(Math.random())] +
-            titulo_sustantivos1[Math.floor(Math.random() * 19)] +
-            titulo_adjetivos[Math.floor(Math.random() * 9)] +
+        titulo = "" + titulo_articulos[Math.round(Math.random())] + " " +
+            titulo_sustantivos1[Math.floor(Math.random() * 19)] + " " +
+            titulo_adjetivos[Math.floor(Math.random() * 9)] + " " +
             titulo_sustantivos2[Math.floor(Math.random() * 19)];
         return titulo;
     }
@@ -33,7 +63,7 @@ class Libro {
         let sumaTotal = 0;
         let decenaSuperior = 0;
         let ISBN;
-        // Creo un aleatorio para codigoPais, que convierto en String
+        // Creo un aleatorio para codigoPais, que convierto en string
         codigoPais = (Math.floor(Math.random() * 1000)).toString();
         // codigoPais debe ser un número de 4 dígitos, así que controlo los 0 de delante
         if (Number(codigoPais) < 100) {
@@ -42,7 +72,7 @@ class Libro {
         if ((Number(codigoPais) > 99) && (Number(codigoPais) < 1000)) {
             codigoPais = "0" + codigoPais;
         }
-        // Creo también un aleatorio para editor. También lo convierto a String
+        // Creo también un aleatorio para editor. También lo convierto a string
         editor = (Math.floor(Math.random() * 10000)).toString();
         if (Number(editor) < 100) {
             editor = "000" + editor;
@@ -66,24 +96,24 @@ class Libro {
         if ((Number(numero_articulo) > 999) && (Number(numero_articulo) < 10000)) {
             numero_articulo = "0" + numero_articulo;
         }
-        digito_control = "" + codigoPais + editor + numero_articulo;
-        for (let i = digito_control.length - 1; i >= 0; i++) {
-            if (i % 2 == 0) {
-                sumaPares += Number(digito_control.charAt(i));
-            }
-            else {
-                sumaImpares += Number(digito_control.charAt(i));
-            }
-        }
-        sumaTotal = sumaPares + (sumaImpares * 3);
-        decenaSuperior = Math.ceil(sumaTotal);
-        if ((decenaSuperior - sumaTotal) % 10 == 0) {
-            digito_control = "0";
-        }
-        else {
-            digito_control = (decenaSuperior - sumaTotal).toString();
-        }
-        ISBN = "" + codigoPais + editor + numero_articulo + digito_control;
+        // digito_control = ""+codigoPais+editor+numero_articulo;
+        // for (let i = digito_control.length-1; i >= 0; i++) {
+        //     if(i%2 == 0)
+        //     {
+        //         sumaPares += Number(digito_control.charAt(i));
+        //     }else{
+        //         sumaImpares += Number(digito_control.charAt(i));
+        //     }
+        // }
+        // sumaTotal = sumaPares + (sumaImpares*3); 
+        // decenaSuperior = Math.ceil(sumaTotal);
+        // if((decenaSuperior - sumaTotal)%10 == 0)
+        // {
+        //     digito_control = "0";
+        // }else{
+        //     digito_control = (decenaSuperior - sumaTotal).toString();
+        // }
+        // ISBN = ""+codigoPais+editor+numero_articulo+digito_control;
         return ISBN;
     }
     generarNombre() {
@@ -94,7 +124,7 @@ class Libro {
         let inicial;
         // Se puede ver que las 5 primeras posiciones son las vocales y el resto consonantes. Esto es importante para los if del for
         let letras = "aeioubcdfjlmnprst";
-        let tamano = Math.floor(Math.random() * 7) + 3;
+        let tamano = Math.floor(Math.random() * (7 - 3 + 1) + 3);
         // Recorremos el tamaño aleatorio del random que se ha creado
         for (let i = 0; i < tamano; i++) {
             // Si estamos en el principio del nombre
@@ -117,11 +147,13 @@ class Libro {
                 // Simplemente voy comprobando que la letra anterior no sea otra consonante u otra vocal
                 // Es decir, nunca voy a tener una vocal seguida de una vocal ni una consonante seguida de una consonante
                 if ((nombre.charAt(i - 1) == 'a') || (nombre.charAt(i - 1) == 'e') || (nombre.charAt(i - 1) == 'i') ||
-                    (nombre.charAt(i - 1) == 'o') || (nombre.charAt(i - 1) == 'u')) {
-                    nombre += letras[Math.floor(Math.random() * letras.length) + 5];
+                    (nombre.charAt(i - 1) == 'o') || (nombre.charAt(i - 1) == 'u') ||
+                    (nombre.charAt(i - 1) == 'A') || (nombre.charAt(i - 1) == 'E') || (nombre.charAt(i - 1) == 'I') ||
+                    (nombre.charAt(i - 1) == 'O') || (nombre.charAt(i - 1) == 'U')) {
+                    nombre += letras[Math.floor(Math.random() * ((letras.length - 1) - 5 + 1)) + 5];
                 }
                 else {
-                    nombre += letras[Math.floor(Math.random() * 4)];
+                    nombre += letras[Math.floor(Math.random() * 5)];
                 }
             }
         }

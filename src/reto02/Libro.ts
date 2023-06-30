@@ -1,48 +1,90 @@
-class Libro{
+class Libro {
+    protected ISBN: string;
+    protected titulo: string;
+    protected autor: string;
+    protected n_pag: number;
 
-    // toString(): void{
+    constructor() {
+        this.ISBN = this.generarISBN();
+        this.titulo = this.generarTitulo();
+        this.autor = this.generarNombre();
+        this.n_pag = this.generarPaginas();
+    }
 
-    //     console.log(this.titulo+" con "+this.ISBN+" creado por "+this.autor+" tiene "+this.paginas);
-    // }
+    getISBN(): string {
+        return this.ISBN;
+    }
 
+    setISBN(ISBN: string) {
+        this.ISBN = ISBN;
+    }
+
+    getTitulo(): string {
+        return this.titulo;
+    }
+
+    setTitulo(titulo: string) {
+        this.titulo = titulo;
+    }
+
+    getAutor(): string {
+        return this.autor;
+    }
+
+    setAutor(autor: string) {
+        this.autor = autor;
+    }
+
+    getN_pag(): number {
+        return this.n_pag;
+    }
+
+    setN_pag(n_pag: number) {
+        this.n_pag = n_pag;
+    }
     
-    generarTitulo(): String{
+    toString(): void{
+
+        console.log(this.titulo+" con "+this.ISBN+" creado por "+this.autor+" tiene "+this.n_pag);
+    }
+    
+    generarTitulo(): string{
 
         // Creo la variable que recogerá el título
-        let titulo: String;
+        let titulo: string;
         // Creo una variable predefinida con 2 artículos. Ambos singulares.
-        let titulo_articulos: String[] = ["La", "El"];
+        let titulo_articulos: string[] = ["La", "El"];
         // Creo otra variable con 20 sustantivos diferentes y en singular. Los 10 primeros femeninos, 10 últimos masculinos
-        let titulo_sustantivos1: String[] = ["Casa", "Inteligencia", "Orquesta", "Jirafa", "Mesa", "Lámpara", "Cara", "Moto", "Radio", "Foto", 
+        let titulo_sustantivos1: string[] = ["Casa", "Inteligencia", "Orquesta", "Jirafa", "Mesa", "Lámpara", "Cara", "Moto", "Radio", "Foto", 
         "Canción", "Emoción", "Televisión", "Conversión", "Sazón", "Razón", "Contención", "Claridad", "Verdad", "Sociedad", 
         "Camión", "Recuerdo", "Rebaño", "Perro", "Cura", "Fantasma", "Mapa", "Sistema", "Mundo", "Techo", 
         "Deseo", "Rodaje", "Maquillaje", "Homenaje", "Refrán", "Desdén", "Motín", "Camión", "Escalón", "Atún"];
         // Otra variable con 10 adjetivos diferentes predefinidos
-        let titulo_adjetivos: String[] = ["Grande", "Pequeño", "Rápido", "Lento", "Fuerte", "Débil", "Caliente", "Frío", "Feliz", "Triste"];
+        let titulo_adjetivos: string[] = ["Grande", "Pequeño", "Rápido", "Lento", "Fuerte", "Débil", "Caliente", "Frío", "Feliz", "Triste"];
         // 20 sustantivos más, 10 femeninos y 10 masculinos. Todos singulares
         let titulo_sustantivos2 = ["Casa", "Inteligencia", "Orquesta", "Jirafa", "Mesa", "Lámpara", "Cara", "Moto", "Radio", "Foto", 
         "Camión", "Recuerdo", "Rebaño", "Perro", "Cura", "Fantasma", "Mapa", "Sistema", "Mundo", "Techo"];
 
         // Asigno a título un valor de cada uno de los arrays anteriormente establecidos para generar un título aleatorio
-        titulo = ""+titulo_articulos[Math.round(Math.random())]+
-                    titulo_sustantivos1[Math.floor(Math.random()*19)]+
-                    titulo_adjetivos[Math.floor(Math.random()*9)]+
+        titulo = ""+titulo_articulos[Math.round(Math.random())]+" "+
+                    titulo_sustantivos1[Math.floor(Math.random()*19)]+ " "+
+                    titulo_adjetivos[Math.floor(Math.random()*9)]+ " "+
                     titulo_sustantivos2[Math.floor(Math.random()*19)];
 
         return titulo;
     }
 
     // He creado el ISBN en base al sistema de generación de EAN's: https://es.wikipedia.org/wiki/European_Article_Number
-    generarISBN(): String{
+    generarISBN(): string{
 
-        let codigoPais: String, editor: String, numero_articulo: String, digito_control: String;
+        let codigoPais: string, editor: string, numero_articulo: string, digito_control: string;
         let sumaPares: number = 0;
         let sumaImpares: number = 0;
         let sumaTotal: number = 0;
         let decenaSuperior: number = 0;
         let ISBN;
 
-        // Creo un aleatorio para codigoPais, que convierto en String
+        // Creo un aleatorio para codigoPais, que convierto en string
         codigoPais = (Math.floor(Math.random()*1000)).toString();
         // codigoPais debe ser un número de 4 dígitos, así que controlo los 0 de delante
         if(Number(codigoPais) < 100)
@@ -54,7 +96,7 @@ class Libro{
             codigoPais = "0"+codigoPais;
         }
 
-        // Creo también un aleatorio para editor. También lo convierto a String
+        // Creo también un aleatorio para editor. También lo convierto a string
         editor = (Math.floor(Math.random()*10000)).toString();
         if(Number(editor) < 100)
         {
@@ -87,45 +129,45 @@ class Libro{
             numero_articulo = "0"+numero_articulo;
         }
 
-        digito_control = ""+codigoPais+editor+numero_articulo;
+        // digito_control = ""+codigoPais+editor+numero_articulo;
 
-        for (let i = digito_control.length-1; i >= 0; i++) {
+        // for (let i = digito_control.length-1; i >= 0; i++) {
             
-            if(i%2 == 0)
-            {
-                sumaPares += Number(digito_control.charAt(i));
-            }else{
-                sumaImpares += Number(digito_control.charAt(i));
-            }
-        }
+        //     if(i%2 == 0)
+        //     {
+        //         sumaPares += Number(digito_control.charAt(i));
+        //     }else{
+        //         sumaImpares += Number(digito_control.charAt(i));
+        //     }
+        // }
 
-        sumaTotal = sumaPares + (sumaImpares*3); 
-        decenaSuperior = Math.ceil(sumaTotal);
+        // sumaTotal = sumaPares + (sumaImpares*3); 
+        // decenaSuperior = Math.ceil(sumaTotal);
 
-        if((decenaSuperior - sumaTotal)%10 == 0)
-        {
+        // if((decenaSuperior - sumaTotal)%10 == 0)
+        // {
 
-            digito_control = "0";
-        }else{
+        //     digito_control = "0";
+        // }else{
 
-            digito_control = (decenaSuperior - sumaTotal).toString();
-        }
+        //     digito_control = (decenaSuperior - sumaTotal).toString();
+        // }
 
-        ISBN = ""+codigoPais+editor+numero_articulo+digito_control;
+        // ISBN = ""+codigoPais+editor+numero_articulo+digito_control;
     
         return ISBN;
     }
 
-    generarNombre(): String{
-
+    generarNombre(): string{
+    
         // Las variables creadas son: 1. La que almacena el nombre 2. La que recibirá la inicial para ponerla en mayúscula
         // 3. Un array predefinido con las letras que, creo, crearán nombres con más sentido 4. El tamaño aleatorio
         // del nombre entre 3 y 7 carácteres
-        let nombre: String = "";
-        let inicial: String;
+        let nombre: string = "";
+        let inicial: string;
         // Se puede ver que las 5 primeras posiciones son las vocales y el resto consonantes. Esto es importante para los if del for
-        let letras: String = "aeioubcdfjlmnprst";
-        let tamano: number = Math.floor(Math.random()*7)+3;
+        let letras: string = "aeioubcdfjlmnprst";
+        let tamano: number = Math.floor(Math.random()*(7-3+1)+3);
 
         // Recorremos el tamaño aleatorio del random que se ha creado
         for (let i = 0; i < tamano; i++) {
@@ -150,69 +192,25 @@ class Libro{
                 // Simplemente voy comprobando que la letra anterior no sea otra consonante u otra vocal
                 // Es decir, nunca voy a tener una vocal seguida de una vocal ni una consonante seguida de una consonante
                 if((nombre.charAt(i-1) == 'a') || (nombre.charAt(i-1) == 'e') ||(nombre.charAt(i-1) == 'i') ||
-                (nombre.charAt(i-1) == 'o') || (nombre.charAt(i-1) == 'u'))
+                (nombre.charAt(i-1) == 'o') || (nombre.charAt(i-1) == 'u') || 
+                (nombre.charAt(i-1) == 'A') || (nombre.charAt(i-1) == 'E') ||(nombre.charAt(i-1) == 'I') ||
+                (nombre.charAt(i-1) == 'O') || (nombre.charAt(i-1) == 'U'))
                 {
-                    nombre += letras[Math.floor(Math.random()*letras.length)+5];
+                    nombre += letras[Math.floor(Math.random()*((letras.length-1)-5+1))+5];
                 }else{
-                    nombre += letras[Math.floor(Math.random()*4)];
+                    nombre += letras[Math.floor(Math.random()*5)];
                 }
             }
         }
-
         return nombre;
     }
 
     generarPaginas(): number{
-
+        
         let paginas: number;
 
         paginas = Math.floor(Math.random()*573)+53;
 
         return paginas;
     }
-class Libro {
-  protected ISBN: string;
-  protected titulo: string;
-  protected autor: string;
-  protected n_pag: number;
-
-  constructor(ISBN: string, titulo: string, autor: string, n_pag: number) {
-    this.ISBN = ISBN;
-    this.titulo = titulo;
-    this.autor = autor;
-    this.n_pag = n_pag;
-  }
-
-  getISBN(): string {
-    return this.ISBN;
-  }
-
-  setISBN(ISBN: string) {
-    this.ISBN = ISBN;
-  }
-
-  getTitulo(): string {
-    return this.titulo;
-  }
-
-  setTitulo(titulo: string) {
-    this.titulo = titulo;
-  }
-
-  getAutor(): string {
-    return this.autor;
-  }
-
-  setAutor(autor: string) {
-    this.autor = autor;
-  }
-
-  getN_pag(): number {
-    return this.n_pag;
-  }
-
-  setN_pag(n_pag: number) {
-    this.n_pag = n_pag;
-  }
-  
 }
