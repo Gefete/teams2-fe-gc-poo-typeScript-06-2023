@@ -3,7 +3,7 @@
 class Cine{
     // 1-Atributos
     // private
-    private asientos:number[];
+    private asientos:Object[][];
     private peliculas:Pelicula[];
     private precio_entrada:number;
     private espectadores:Espectador[];
@@ -20,7 +20,9 @@ class Cine{
         if(dinero>=precio_entrada && edad>=pelicula.get)
         
     }
+
     asignarAsientos(){
         
     }
-} */ 
+<<<<<<<< HEAD:src/Cine.ts
+} */
