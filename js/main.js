@@ -1,3 +1,0 @@
-
-crearAsientos();
-console.log(asientos);

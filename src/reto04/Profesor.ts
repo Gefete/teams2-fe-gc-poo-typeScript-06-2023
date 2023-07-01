@@ -1,4 +1,4 @@
-type typeSexo = 'H' | 'M';
+/* type typeSexo = 'H' | 'M';
 class Profesor extends Persona {
     protected materia:Materia;
 
@@ -12,4 +12,4 @@ class Profesor extends Persona {
         let random_numB = Math.floor(Math.random()*5);
         return random_numB === random_numA ? false : true;
     }
-}
+} */
