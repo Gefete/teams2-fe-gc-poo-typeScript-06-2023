@@ -1,5 +1,5 @@
-
-/* 
+"use strict";
+/*
 class Cine{
     // 1-Atributos
     // private
@@ -26,16 +26,3 @@ class Cine{
     }
 <<<<<<<< HEAD:src/Cine.ts
 } */
-========
-
-    crearAsientos():void {
-        for (let i = 0; i < 8; i++) {
-            for (let j = 0; j < 9; j++) {
-                this.asientos[i][j] = {"letra":String.fromCharCode(65+j),"fila":8-i,"ocupado":false};
-            } 
-        }
-    }
-
-    
-}
->>>>>>>> origin/ft01:src/reto05/Cine.ts

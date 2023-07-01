@@ -1,3 +1,4 @@
+"use strict";
 /* class MainApp {
     crearEspectadores():Espectador[]{
         let espectadores:Espectador[] = [];
@@ -13,4 +14,4 @@
 
         return espectadores;
     }
-} */
+} */ 
