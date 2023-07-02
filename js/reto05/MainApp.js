@@ -1,4 +1,5 @@
-class MainApp {
+"use strict";
+/* class MainApp {
     crearEspectadores():Espectador[]{
         let espectadores:Espectador[] = [];
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -13,4 +14,4 @@ class MainApp {
 
         return espectadores;
     }
-}
+} */ 

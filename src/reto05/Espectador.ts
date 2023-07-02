@@ -2,9 +2,20 @@ class Espectador extends Persona {
     protected edad:number;
     protected dinero:number;
 
-    constructor(name:string, edad:number, dinero:number){
-        super(name);
-        this.edad = edad;
-        this.dinero = dinero;
+    constructor(){
+        super();
+        this.edad = Math.floor(Math.random() * 70)+4;
+        this.dinero = Math.floor(Math.random() * 50);
+    }
+
+    getMoney():number{
+        return this.dinero;
+    }
+    getAge():number{
+        return this.edad;
+    }
+    
+    toString():string{
+        return this.name+" "+this.lastName+" edad: "+this.edad +" dinero: "+this.dinero;
     }
 }
