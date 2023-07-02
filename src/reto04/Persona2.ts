@@ -2,7 +2,7 @@
 
 type tiposSexo = "Hombre" | "Mujer";
 
-class Persona{
+class Persona2{
 
 //  ===== ATRIBUTOS =====
 
