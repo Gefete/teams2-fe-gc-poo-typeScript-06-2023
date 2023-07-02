@@ -2,24 +2,23 @@ class Pelicula{
 
     // ====== ATRIBUTOS =====
 
-    private titulo: String;
-    private duracion: Number;
-    private edad_minima: Number;
+    private titulo: string;
+    private duracion: number;
+    private edad_minima: number;
     private director: Persona;
 
     // ====== CONSTRUCTOR =====
     
-    constructor (director:Persona){
-
+    constructor (){
         this.titulo = this.generarTitulo();
         this.duracion = this.generarDuracion();
         this.edad_minima = this.generarEdadMinima();
-        this.director = director;
+        this.director = new Persona();
     }
 
     // ====== SETTERS =====
 
-    setTitulo (newTitulo: String) : void{
+    setTitulo (newTitulo: string) : void{
 
         this.titulo = newTitulo;
     }
@@ -41,17 +40,17 @@ class Pelicula{
 
     // ====== GETTERS =====
 
-    getTitulo () : String{
+    getTitulo () : string{
 
         return this.titulo;
     }
     
-    getDuracion () : Number{
+    getDuracion () : number{
 
         return this.duracion;
     }
         
-    getEdadMinima () : Number{
+    getEdadMinima () : number{
 
         return this.edad_minima;
     }
@@ -66,13 +65,13 @@ class Pelicula{
     toString () : void{
 
         console.log(this.titulo+" tiene una duración de "+this.duracion+" minutos, la edad mínima para el visionado son "+
-        this.edad_minima+" años y el creador es "+this.director);
+        this.edad_minima+" años y el creador es "+this.director.getName()+" "+this.director.getLastName());
     }
 
     // ====== MÉTODOS =====
 
     // Con mi generador de nombres automático, creo el nombre de la película
-    generarTitulo () : String{
+    generarTitulo () : string{
 
         // Creo la variable que recogerá el título
         let titulo: string;
@@ -93,7 +92,7 @@ class Pelicula{
         let sustantivos1Genero: number;
         let adjetivosGenero: number;
         let sustantivos2Genero: number;
-        let preposicion: String;
+        let preposicion: string;
 
         // Genero el random para el género del artículo del título
         articuloGenero = Math.round(Math.random());
@@ -128,9 +127,9 @@ class Pelicula{
     }
 
     // Genero la duración de la película
-    generarDuracion () : Number{
+    generarDuracion () : number{
 
-        let duracion: Number;
+        let duracion: number;
 
         // Duración aleatoria entre 48 y 300 minutos
         duracion = Math.floor(Math.random()*(300-48+1)+48);
@@ -139,14 +138,54 @@ class Pelicula{
     }
 
     // También una edad
-    generarEdadMinima () : Number{
+    generarEdadMinima () : number{
 
         // Comprendida entre los siguientes valores
-        let edades: Number[] = [0,7,12,16,18];
-        let edad: Number;
+        let edades: number[] = [0,7,12,16,18];
+        let edad: number;
 
-        edad = edades[Math.floor(Math.random()*edades.length-1)];
+        edad = edades[Math.floor(Math.random()*edades.length)];
 
         return edad;
     }
 }
+
+
+/* class Pelicula{
+    // Vairable
+    private titulo:string;
+    private duracion:number;
+    private edad_minima:string;
+    private director:Persona;
+    
+    constructor(titulo:string){
+        this.titulo = titulo;
+        this.duracion = Math.floor(Math.random() * 60)+160;
+        this.edad_minima = this.generateAgeCalification();
+        this.director = new Persona();
+    }
+
+    generateAgeCalification (): string{
+        let option = Math.floor(Math.random() * 5);
+        switch (option) {
+            case 0:
+                return "7";
+                break;
+            case 0:
+                return "12";
+                break;
+            case 0:
+                return "16";
+                break;
+            case 0:
+                return "18";
+                break;
+            default:
+                return "A";
+                break;
+        }
+    }
+
+
+
+} */
