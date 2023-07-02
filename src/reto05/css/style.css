@@ -1,4 +1,11 @@
-.color_base{
+
+.filas{
+
     background-color: gray;
+    padding: 2em 1em;
 }
 
+.asiento{
+
+    background-image: url();
+}
