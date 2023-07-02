@@ -28,4 +28,5 @@ class Persona {
         let lastNamePosition:number = Math.floor(Math.random() * lastNameList.length);
         return lastNameList[lastNamePosition];
     }
+    
 }

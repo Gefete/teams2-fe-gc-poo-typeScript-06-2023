@@ -15,4 +15,7 @@ class Espectador extends Persona {
         return this.edad;
     }
     
+    toString():string{
+        return this.name+" "+this.lastName+" edad: "+this.edad +" dinero: "+this.dinero;
+    }
 }

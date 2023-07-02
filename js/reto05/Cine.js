@@ -11,7 +11,7 @@ class Cine {
     //3-Métodos propios
     controlAcceso(dinero, edad) {
         // let pelicula = peliculas.find(pel => pel.titulo === title);
-        console.log(this.peliculas.getEdadMinima());
+        // console.log(this.peliculas.getEdadMinima());
         if (dinero >= this.precio_entrada && edad >= this.peliculas.getEdadMinima()) {
             return true;
         }
@@ -37,6 +37,8 @@ class Cine {
                     col = Math.floor(Math.random() * 8);
                     if (!this.asientos[col][row].ocupado) {
                         this.asientos[col][row].ocupado = true;
+                        this.asientos[col][row].persona = this.espectadores[i].toString();
+                        ;
                         pass = true;
                         plazasAsignadas++;
                         // console.log("Plaza asinada");
@@ -52,12 +54,6 @@ class Cine {
                     }
                 }
             }
-            // else if(plazasAsignadas>(this.asientos[0].length*this.asientos.length)){
-            //     console.log("aforo maximo alcanzado");
-            //     console.log(`Personas atendidas ${i+1} de ${this.espectadores.length} `);
-            //     pass=true;
-            //     especAforoRechazado++;
-            // }
             else {
                 espectadoresRechazados++;
                 // console.log(this.espectadores[i])
@@ -77,7 +73,8 @@ class Cine {
                 genAsientos[i][j] = {
                     "letra": String.fromCharCode(65 + j),
                     "fila": 8 - i,
-                    "ocupado": false
+                    "ocupado": false,
+                    "persona": ""
                 };
             }
         }
@@ -95,5 +92,14 @@ class Cine {
     }
     getPrecio() {
         return this.precio_entrada + "€";
+    }
+    getAsientos() {
+        return this.asientos;
+    }
+    getEdadMinima() {
+        return this.peliculas.getEdadMinima();
+    }
+    toString() {
+        this.peliculas.toString();
     }
 }
