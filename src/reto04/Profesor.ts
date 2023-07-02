@@ -1,5 +1,5 @@
 /* type typeSexo = 'H' | 'M';
-class Profesor extends Persona {
+class Profesor extends Persona2 {
     protected materia:Materia;
 
     constructor(nombre:string, edad:number, sexo:typeSexo, materia:Materia){
