@@ -1,4 +1,69 @@
-.color_base{
-    background-color: gray;
+body{
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
 
+#titulo{
+
+    font-size: 3em;
+}
+
+#edad, #precio{
+
+    font-size: 2em;
+}
+
+#edad{
+
+    text-align: left;
+}
+
+#precio{
+
+    text-align: right;
+}
+
+.fila{
+
+    margin: 0em 15em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.asiento{
+
+    margin: 1em 0.5em;
+
+    font-size: 1.5em; 
+    font-weight: bold;
+
+    text-align: center;
+
+    border-radius: 50%;
+}
+
+.pantalla{
+
+    height: 12vh;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 5px solid white;
+}
+
+.pantalla p{
+
+    margin: 0;
+
+    font-size: 4em;
+}
