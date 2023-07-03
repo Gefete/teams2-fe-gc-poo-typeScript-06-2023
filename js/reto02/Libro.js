@@ -202,4 +202,15 @@ class Libro {
         paginas = Math.floor(Math.random() * 573) + 53;
         return paginas;
     }
+    compararHojas(libro) {
+        if (this.n_pag > libro.n_pag) {
+            return "El libro: " + this.titulo + " es el que más páginas tiene " + this.n_pag;
+        }
+        else if (this.n_pag == libro.n_pag) {
+            return "El libro: " + this.titulo + ", y " + libro.titulo + "tienen las mismas páginas " + this.n_pag;
+        }
+        else {
+            return "El libro: " + libro.titulo + " es el que más páginas tiene " + libro.n_pag;
+        }
+    }
 }
