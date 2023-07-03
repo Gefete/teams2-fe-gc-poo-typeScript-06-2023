@@ -59,4 +59,19 @@ class Raices{
 
         return discriminante;
     }
+
+
+    //Metodos Gerard
+    /*  • calcular(): mostrara por consola las posibles soluciones que tiene nuestra ecuación, en caso 
+        de no existir solución, mostrarlo también.
+        • obtenerRaices(): imprime las 2 posibles soluciones
+        • obtenerRaiz(): imprime única raíz, que será cuando solo tenga una solución posible.
+        Formula ecuación 2º grado: (-b±√((b^2)-(4*a*c)))/(2*a)
+        Solo varia el signo delante de -b */
+    calcular():void{
+        
+    }
+    obtenerRaices():void{}
+    obtenerRaiz():void{}
+
 }
