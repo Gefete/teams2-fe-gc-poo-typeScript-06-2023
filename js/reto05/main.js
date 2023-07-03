@@ -14,7 +14,7 @@ cine.asignarAsientos(); // Metodo que asigna los asientos a los espectadores
 const createVisual = () => {
     let asientos = cine.getAsientos(); // Guarda en variable el multiarray
     // Coge el array de elementos html con la clase col
-    let elementos = document.getElementsByClassName("col");
+    let elementos = document.getElementsByClassName("asiento");
     // incremental que indica la posicion del array de elemntos HTML ya que no es multiarray
     let increment = 0;
     // Bucles que recorren los asientos creados en la clase cine
@@ -37,11 +37,11 @@ const asignVisual = () => {
             let elemento = document.getElementById(asientos[i][j].fila + asientos[i][j].letra);
             // Si esta ocupado por un Espectador se pinta de color rojo
             if (asientos[i][j].ocupado) {
-                elemento.style.color = "red";
+                elemento.style.background = "red";
                 // Si esta libre de verde
             }
             else {
-                elemento.style.color = "green";
+                elemento.style.background = "green";
             }
         }
     }
