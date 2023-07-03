@@ -59,6 +59,21 @@ class Raices{
 
         return discriminante;
     }
+    
+    // El discriminante puede ser positivo, cero o negativo y esto determina cuántas soluciones 
+    // (o raíces) existen para la ecuación cuadrática dada.
+
+    // Un discriminante positivo indica que la cuadrática tiene dos soluciones reales distintas.
+    tieneRaices(aValue: number, bValue: number, cValue: number):boolean {
+        return this.getDiscriminante(aValue,bValue,cValue) > 0 ? true : false;
+    }
+
+    // Un discriminante de cero indica que la cuadrática tiene una solución real repetida.
+    tieneRaiz(aValue: number, bValue: number, cValue: number):boolean {
+        return this.getDiscriminante(aValue,bValue,cValue) === 0 ? true : false;
+    }
+
+    
 
 
     //Metodos Gerard
