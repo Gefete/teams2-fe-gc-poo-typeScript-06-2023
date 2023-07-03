@@ -35,6 +35,7 @@ class Raices {
     // El discriminante puede ser positivo, cero o negativo y esto determina cuántas soluciones 
     // (o raíces) existen para la ecuación cuadrática dada.
     // Un discriminante positivo indica que la cuadrática tiene dos soluciones reales distintas.
+
     tieneRaices() {
         return this.getDiscriminante() > 0 ? true : false;
     }
@@ -79,5 +80,4 @@ class Raices {
         else {
             console.log("No tiene una sola solucion");
         }
-    }
 }

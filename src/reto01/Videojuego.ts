@@ -1,4 +1,6 @@
-class Videojuego /* implements I */{
+
+class Videojuego implements IEntregable{
+
   protected titulo: string;
   protected horas_estimadas: number = 10;
   protected entregado: boolean = false;
@@ -9,6 +11,25 @@ class Videojuego /* implements I */{
     this.titulo = titulo;
     this.genero = genero;
     this.compania = compania;
+  }
+  
+  entregar(): void {
+    this.entregado = true;
+  }
+  devolver(): void {
+    this.entregado = false;
+  }
+  isEntregado(): boolean {
+    return this.entregado;
+  }
+  compareTo(a: Object): number {
+    if(a instanceof Videojuego){
+      if(this.horas_estimadas > a.getHorasEstimadas()) return -1;
+      else if(this.horas_estimadas === a.getHorasEstimadas()) return 0;
+      else return 1;
+    }else{
+      return -1;
+    }
   }
 
   getTitulo(): string {
