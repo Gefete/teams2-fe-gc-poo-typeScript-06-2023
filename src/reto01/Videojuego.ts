@@ -1,4 +1,6 @@
+
 class Videojuego implements IEntregable{
+
   protected titulo: string;
   protected horas_estimadas: number = 10;
   protected entregado: boolean = false;

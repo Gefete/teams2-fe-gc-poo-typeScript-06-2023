@@ -3,7 +3,7 @@
 const defectoGenero = "Drama";
 const defectoTemporadas = 3;
 const defectoEntregado = false;
-class Serie {
+class Serie /* implements IEntregable */ {
     //  ===== CONSTRUCTOR ======
     constructor(newTitulo, newCreador) {
         this.titulo = newTitulo;

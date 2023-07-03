@@ -51,11 +51,11 @@ class Raices{
 
     //  ===== MÉTODOS =====
 
-    getDiscriminante(aValue: number, bValue: number, cValue: number): number{
+    getDiscriminante(): number{
 
         let discriminante;
 
-        discriminante = (bValue**2)-4*aValue*cValue;
+        discriminante = (this.b**2)-4*this.a*this.c;
 
         return discriminante;
     }
@@ -64,14 +64,51 @@ class Raices{
     // (o raíces) existen para la ecuación cuadrática dada.
 
     // Un discriminante positivo indica que la cuadrática tiene dos soluciones reales distintas.
-    tieneRaices(aValue: number, bValue: number, cValue: number):boolean {
-        return this.getDiscriminante(aValue,bValue,cValue) > 0 ? true : false;
+    tieneRaices():boolean {
+        return this.getDiscriminante() > 0 ? true : false;
     }
 
     // Un discriminante de cero indica que la cuadrática tiene una solución real repetida.
-    tieneRaiz(aValue: number, bValue: number, cValue: number):boolean {
-        return this.getDiscriminante(aValue,bValue,cValue) === 0 ? true : false;
+    tieneRaiz():boolean {
+        return this.getDiscriminante() === 0 ? true : false;
     }
 
     
+
+
+    //Metodos Gerard
+    /*  • calcular(): mostrara por consola las posibles soluciones que tiene nuestra ecuación, en caso 
+        de no existir solución, mostrarlo también.
+        • obtenerRaices(): imprime las 2 posibles soluciones
+        • obtenerRaiz(): imprime única raíz, que será cuando solo tenga una solución posible.
+        Formula ecuación 2º grado: (-b±√((b^2)-(4*a*c)))/(2*a)
+        Solo varia el signo delante de -b */
+    calcular():void{
+        if(this.tieneRaices()){
+            this.obtenerRaices();
+        }else if(this.tieneRaiz()){
+            this.obtenerRaiz();
+        }else{
+            console.log("no tiene solucion");
+        }
+    }
+    obtenerRaices():void{
+        if(this.tieneRaices()){
+            let operacion2nGradopositive = (-this.b+Math.sqrt((this.b**2)-(4*this.a*this.c)))/(2*this.a);
+            console.log(operacion2nGradopositive);
+            let operacion2nGradonegative = (-this.b-Math.sqrt((this.b**2)-(4*this.a*this.c)))/(2*this.a);
+            console.log(operacion2nGradonegative);
+        }else{
+            console.log("solo tiene una solucion")
+        }
+    }
+    obtenerRaiz():void{
+        if(this.tieneRaiz()){
+            let operacion2nGradon= (-this.b-Math.sqrt((this.b**2)-(4*this.a*this.c)))/(2*this.a);
+            console.log(operacion2nGradon);
+        }else{
+            console.log("No tiene una sola solucion")
+        }
+    }
+
 }

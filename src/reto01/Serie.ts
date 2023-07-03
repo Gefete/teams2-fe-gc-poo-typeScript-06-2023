@@ -4,6 +4,17 @@ const defectoGenero = "Drama";
 const defectoTemporadas = 3;
 const defectoEntregado = false;
 
+class Serie /* implements IEntregable */{
+
+//  ===== ATRIBUTOS ======
+
+    private titulo: String;
+    private temporadas: number;
+    private entregado: boolean;
+    private genero: String;
+    private creador: String;
+
+//  ===== CONSTRUCTOR ======
 class Serie implements IEntregable {
   //  ===== ATRIBUTOS ======
 
