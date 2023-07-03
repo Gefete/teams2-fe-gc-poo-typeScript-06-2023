@@ -1,80 +1,93 @@
-
 //  ===== CONSTANTES ======
 
 const defectoGenero = "Drama";
 const defectoTemporadas = 3;
 const defectoEntregado = false;
 
-class Serie{
+class Serie implements IEntregable {
+  //  ===== ATRIBUTOS ======
 
-//  ===== ATRIBUTOS ======
+  private titulo: String;
+  private temporadas: number;
+  private entregado: boolean;
+  private genero: String;
+  private creador: String;
 
-    private titulo: String;
-    private temporadas: number;
-    private entregado: boolean;
-    private genero: String;
-    private creador: String;
+  //  ===== CONSTRUCTOR ======
 
-//  ===== CONSTRUCTOR ======
-
-    constructor (newTitulo: String, newCreador: String){
-
-        this.titulo = newTitulo;
-        this.temporadas = defectoTemporadas;
-        this.entregado = defectoEntregado;
-        this.genero = defectoGenero;
-        this.creador = newCreador;
-    }
-
-//  ===== SETTERS ======
-
-setTitulo (newTitulo: String): void{
-
+  constructor(newTitulo: String, newCreador: String) {
     this.titulo = newTitulo;
-}
-
-setTemporadas (newTemporadas: number): void{
-
-    this.temporadas = newTemporadas;
-}
-
-setGenero (newGenero: String): void{
-
-    this.genero = newGenero;
-}
-
-setCreador (newCreador: String): void{
-
+    this.temporadas = defectoTemporadas;
+    this.entregado = defectoEntregado;
+    this.genero = defectoGenero;
     this.creador = newCreador;
-}
+  }
 
-//  ===== GETTERS ======
+  //  ===== SETTERS ======
 
-getTitulo (): String{
+  setTitulo(newTitulo: String): void {
+    this.titulo = newTitulo;
+  }
 
+  setTemporadas(newTemporadas: number): void {
+    this.temporadas = newTemporadas;
+  }
+
+  setGenero(newGenero: String): void {
+    this.genero = newGenero;
+  }
+
+  setCreador(newCreador: String): void {
+    this.creador = newCreador;
+  }
+
+  //  ===== GETTERS ======
+
+  getTitulo(): String {
     return this.titulo;
-}
+  }
 
-getTemporadas (): number{
-
+  getTemporadas(): number {
     return this.temporadas;
-}
+  }
 
-getGenero (): String{
-
+  getGenero(): String {
     return this.genero;
-}
+  }
 
-getCreador (): String{
-
+  getCreador(): String {
     return this.creador;
-}
+  }
 
-//  ===== toString ======
+  //  ===== toString ======
 
-toString(): void{
+  toString(): string {
+    return this.titulo +
+        " tiene " +
+        this.temporadas +
+        " temporadas, es del género " +
+        this.genero +
+        " y fue creada por " +
+        this.creador
+    ;
+  }
 
-    console.log(this.titulo+" tiene "+this.temporadas+" temporadas, es del género "+this.genero+" y fue creada por "+this.creador);
-}
-
+  entregar(): void {
+    this.entregado = true;
+  }
+  devolver(): void {
+    this.entregado = false;
+  }
+  isEntregado(): boolean {
+    return this.entregado;
+  }
+  compareTo(a: Object): number {
+    if(a instanceof Serie){
+        if(this.temporadas > a.getTemporadas()) return -1;
+        else if(this.temporadas === a.getTemporadas()) return 0;
+        else return 1;
+      }else{
+        return -1;
+      }
+  }
 }

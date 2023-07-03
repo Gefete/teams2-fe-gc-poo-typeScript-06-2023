@@ -40,6 +40,34 @@ class Serie {
     }
     //  ===== toString ======
     toString() {
-        console.log(this.titulo + " tiene " + this.temporadas + " temporadas, es del género " + this.genero + " y fue creada por " + this.creador);
+        return this.titulo +
+            " tiene " +
+            this.temporadas +
+            " temporadas, es del género " +
+            this.genero +
+            " y fue creada por " +
+            this.creador;
+    }
+    entregar() {
+        this.entregado = true;
+    }
+    devolver() {
+        this.entregado = false;
+    }
+    isEntregado() {
+        return this.entregado;
+    }
+    compareTo(a) {
+        if (a instanceof Serie) {
+            if (this.temporadas > a.getTemporadas())
+                return -1;
+            else if (this.temporadas === a.getTemporadas())
+                return 0;
+            else
+                return 1;
+        }
+        else {
+            return -1;
+        }
     }
 }

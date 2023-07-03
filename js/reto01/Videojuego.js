@@ -7,6 +7,28 @@ class Videojuego {
         this.genero = genero;
         this.compania = compania;
     }
+    entregar() {
+        this.entregado = true;
+    }
+    devolver() {
+        this.entregado = false;
+    }
+    isEntregado() {
+        return this.entregado;
+    }
+    compareTo(a) {
+        if (a instanceof Videojuego) {
+            if (this.horas_estimadas > a.getHorasEstimadas())
+                return -1;
+            else if (this.horas_estimadas === a.getHorasEstimadas())
+                return 0;
+            else
+                return 1;
+        }
+        else {
+            return -1;
+        }
+    }
     getTitulo() {
         return this.titulo;
     }
