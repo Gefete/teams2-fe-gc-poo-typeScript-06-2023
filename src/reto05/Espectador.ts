@@ -1,6 +1,6 @@
 class Espectador extends Persona {
-    protected edad:number;
-    protected dinero:number;
+    private edad:number;
+    private dinero:number;
 
     constructor(){
         super();

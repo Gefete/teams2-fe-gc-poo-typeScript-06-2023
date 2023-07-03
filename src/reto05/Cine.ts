@@ -10,7 +10,7 @@ class Cine{
     constructor(qntEspectator:number){
         this.asientos = this.crearAsientos(); 
         this.precio_entrada = Math.floor(Math.random() * 2)+10;
-        this.peliculas = new Pelicula();
+        this.peliculas = new Pelicula("Hola");
         this.espectadores= this.generateEspectators(qntEspectator);
     }
 
@@ -46,7 +46,7 @@ class Cine{
                     col = Math.floor(Math.random() * 8);
                     if (!this.asientos[col][row].ocupado){
                         this.asientos[col][row].ocupado = true;
-                        this.asientos[col][row].persona = this.espectadores[i].toString(); ;
+                        this.asientos[col][row].persona = this.espectadores[i].toString();
                         pass=true;
                         plazasAsignadas++;
                         // console.log("Plaza asinada");
@@ -55,8 +55,8 @@ class Cine{
                     //     console.log("Plaza no disponible buscar libre");
                     // }
                     if(plazasAsignadas>=(this.asientos[0].length*this.asientos.length)){
-                        // console.log("aforo maximo alcanzado");
-                        // console.log(`Personas atendidas ${i+1} de ${this.espectadores.length} `);
+                        console.log("aforo maximo alcanzado");
+                        console.log(`Personas atendidas ${i+1} de ${this.espectadores.length} `);
                         pass=true;
                         especAforoRechazado++;
                     }
@@ -64,8 +64,8 @@ class Cine{
             }
             else{
                 espectadoresRechazados++;
-                // console.log(this.espectadores[i])
-                // console.log("no cumple los requisitos");
+                console.log(this.espectadores[i])
+                console.log("no cumple los requisitos");
             }
             // console.log(`Persona atendida ${i+1} de ${this.espectadores.length}`);
         }

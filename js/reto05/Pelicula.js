@@ -1,11 +1,11 @@
 "use strict";
 class Pelicula {
     // ====== CONSTRUCTOR =====
-    constructor() {
+    constructor(newPersona) {
         this.titulo = this.generarTitulo();
         this.duracion = this.generarDuracion();
         this.edad_minima = this.generarEdadMinima();
-        this.director = new Persona();
+        this.director = newPersona;
     }
     // ====== SETTERS =====
     setTitulo(newTitulo) {
@@ -36,7 +36,7 @@ class Pelicula {
     // ====== toString() =====
     toString() {
         console.log(this.titulo + " tiene una duración de " + this.duracion + " minutos, la edad mínima para el visionado son " +
-            this.edad_minima + " años y el creador es " + this.director.getName() + " " + this.director.getLastName());
+            this.edad_minima + " años y el creador es " + this.director);
     }
     // ====== MÉTODOS =====
     // Con mi generador de nombres automático, creo el nombre de la película

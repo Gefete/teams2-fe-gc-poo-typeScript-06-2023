@@ -28,7 +28,6 @@ body{
 
 .fila{
 
-    margin: 0em 15em;
 
     display: flex;
     justify-content: space-around;
@@ -44,7 +43,7 @@ body{
 
     text-align: center;
 
-    border-radius: 50%;
+    border-radius: 20%;
 }
 
 .pantalla{

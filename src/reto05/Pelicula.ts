@@ -5,15 +5,15 @@ class Pelicula{
     private titulo: string;
     private duracion: number;
     private edad_minima: number;
-    private director: Persona;
+    private director: string;
 
     // ====== CONSTRUCTOR =====
     
-    constructor (){
+    constructor (newPersona: string){
         this.titulo = this.generarTitulo();
         this.duracion = this.generarDuracion();
         this.edad_minima = this.generarEdadMinima();
-        this.director = new Persona();
+        this.director = newPersona;
     }
 
     // ====== SETTERS =====
@@ -33,7 +33,7 @@ class Pelicula{
         this.edad_minima = newEdad;
     }
 
-    setDirector (newDirector: Persona) : void{
+    setDirector (newDirector: string) : void{
 
         this.director = newDirector;
     }
@@ -55,7 +55,7 @@ class Pelicula{
         return this.edad_minima;
     }
 
-    getDirector () : Persona{
+    getDirector () : string{
 
         return this.director;
     }
@@ -65,7 +65,7 @@ class Pelicula{
     toString () : void{
 
         console.log(this.titulo+" tiene una duración de "+this.duracion+" minutos, la edad mínima para el visionado son "+
-        this.edad_minima+" años y el creador es "+this.director.getName()+" "+this.director.getLastName());
+        this.edad_minima+" años y el creador es "+this.director);
     }
 
     // ====== MÉTODOS =====

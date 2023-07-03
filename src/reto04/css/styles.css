@@ -1,0 +1,131 @@
+body{
+    
+    background-color: bisque;
+
+    font-weight: bold;
+}
+
+.clase{
+
+    margin: 0 10% 2em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.asistencia_alumnos p{
+
+    margin: 0;
+
+    font-size: 1.5em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#alumnos_asistentes, #alumnos_faltantes{
+
+    margin: 0.2em;
+
+    font-size: 2em;
+}
+
+.seccion_pizarra{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pizarra{
+
+    height: 15vh;
+    width: 30vw;
+
+    border: 5px solid brown;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2em;
+}
+
+#pizarra p{
+
+    text-align: center;
+}
+
+#mensaje_pizarra p{
+
+    margin: 0;
+
+    font-size: 1.2em;
+}
+
+#mesa_profesor{
+
+    height: 10vh;
+    width: 12vw;
+    background-color: brown;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+#mesa_profesor p {
+
+    margin: 0;
+
+    text-align: center;
+}
+
+.fila{
+
+    margin: 0em 10% 1em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.pupitre{
+
+    height: 6vh;
+    width: 10vh;
+    border: 5px solid brown;
+}
+
+.plaza{
+
+    text-align: center;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.alumno{
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alumno p{
+
+    max-width: 5vw;
+    margin: 0;
+    text-align: center;
+}
