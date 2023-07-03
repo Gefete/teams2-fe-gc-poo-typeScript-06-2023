@@ -5,8 +5,7 @@ class Estudiante extends Persona2 {
 
     constructor(newEdadMinima: number, newEdadMaxima: number, materia:Materia){
         super(newEdadMinima,newEdadMaxima);
-        /* this.materia = new Materia(); */ //<--Es realmente necesario meter un argumento, 
-                                        // ¿la clase no lo genera aleatoriamente la asignatura? 
+        /* this.materia = new Materia();  */
         this.calificacion = Math.floor(Math.random()*10);
     }
 

@@ -1,4 +1,4 @@
-class Videojuego {
+class Videojuego /* implements I */{
   protected titulo: string;
   protected horas_estimadas: number = 10;
   protected entregado: boolean = false;

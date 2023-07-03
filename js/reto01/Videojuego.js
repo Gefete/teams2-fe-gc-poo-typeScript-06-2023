@@ -1,5 +1,5 @@
 "use strict";
-class Videojuego {
+class Videojuego /* implements I */ {
     constructor(titulo, genero, compania) {
         this.horas_estimadas = 10;
         this.entregado = false;
