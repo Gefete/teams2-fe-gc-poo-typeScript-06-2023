@@ -9,11 +9,11 @@ class Pelicula{
 
     // ====== CONSTRUCTOR =====
     
-    constructor (){
+    constructor (newPersona:Persona){
         this.titulo = this.generarTitulo();
         this.duracion = this.generarDuracion();
         this.edad_minima = this.generarEdadMinima();
-        this.director = new Persona();
+        this.director = newPersona;
     }
 
     // ====== SETTERS =====
@@ -149,43 +149,3 @@ class Pelicula{
         return edad;
     }
 }
-
-
-/* class Pelicula{
-    // Vairable
-    private titulo:string;
-    private duracion:number;
-    private edad_minima:string;
-    private director:Persona;
-    
-    constructor(titulo:string){
-        this.titulo = titulo;
-        this.duracion = Math.floor(Math.random() * 60)+160;
-        this.edad_minima = this.generateAgeCalification();
-        this.director = new Persona();
-    }
-
-    generateAgeCalification (): string{
-        let option = Math.floor(Math.random() * 5);
-        switch (option) {
-            case 0:
-                return "7";
-                break;
-            case 0:
-                return "12";
-                break;
-            case 0:
-                return "16";
-                break;
-            case 0:
-                return "18";
-                break;
-            default:
-                return "A";
-                break;
-        }
-    }
-
-
-
-} */

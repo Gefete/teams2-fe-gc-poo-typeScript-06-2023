@@ -1,17 +1,16 @@
 "use strict";
 class Cine {
     // Constructor
-    constructor(qntEspectator) {
+    constructor(qntEspectator, pelicula, espectadorArray) {
         this.asientos = this.crearAsientos();
         this.precio_entrada = Math.floor(Math.random() * 2) + 10;
-        this.peliculas = new Pelicula();
-        this.espectadores = this.generateEspectators(qntEspectator);
+        this.peliculas = pelicula;
+        this.espectadores = espectadorArray;
     }
     // Metodos
-    //3-Métodos propios
+    //---3-Métodos propios
+    //Este metodo controla el acceso de los espectadores
     controlAcceso(dinero, edad) {
-        // let pelicula = peliculas.find(pel => pel.titulo === title);
-        // console.log(this.peliculas.getEdadMinima());
         if (dinero >= this.precio_entrada && edad >= this.peliculas.getEdadMinima()) {
             return true;
         }
@@ -19,6 +18,7 @@ class Cine {
             return false;
         }
     }
+    // Metodo que asigna a los espectadores (que pasan el filtro) un asiento, tambien marca cuando el aforo se ha completado
     asignarAsientos() {
         let permitir = false;
         let row = 0;
@@ -43,30 +43,40 @@ class Cine {
                         plazasAsignadas++;
                         // console.log("Plaza asinada");
                     }
-                    // else{
-                    //     console.log("Plaza no disponible buscar libre");
-                    // }
+                    else {
+                        // Notifica que el sitio seleccionado ya estaba ocupado
+                        console.log("La plaza seleccionada esta ocupada buscando plaza libre");
+                    }
+                    // Condicional en el que se comprueba si las 72 plazas (filas*columnas) estan ocupadas
                     if (plazasAsignadas >= (this.asientos[0].length * this.asientos.length)) {
-                        // console.log("aforo maximo alcanzado");
-                        // console.log(`Personas atendidas ${i+1} de ${this.espectadores.length} `);
+                        // Notifica que el aforo esta al maximo
+                        console.log("aforo maximo alcanzado");
+                        // Comprovante que finaliza el While
                         pass = true;
+                        // registra rechazados que han pasado el filtro pero el aforo esta al maximo
                         especAforoRechazado++;
                     }
                 }
             }
             else {
+                // No pasan el filtro
                 espectadoresRechazados++;
-                // console.log(this.espectadores[i])
-                // console.log("no cumple los requisitos");
+                console.log(this.espectadores[i]);
+                console.log("no cumple los requisitos");
             }
-            // console.log(`Persona atendida ${i+1} de ${this.espectadores.length}`);
+            //Notifica la persona a la que ha atendido de la cola
+            console.log(`Persona atendida ${i + 1} de ${this.espectadores.length}`);
         }
+        // Imprime el registro de la cola de clientes
         console.log(`Personas dentro del cine ${plazasAsignadas}`);
         console.log(`Personas que se les ha rechazado el acceso por no cumplir requisitos ${espectadoresRechazados}`);
         console.log(`Personas que se les ha rechazado el acceso por alcanzar el maximo aforo ${especAforoRechazado}`);
     }
+    // Metodo que crea el Objeto asientos, utiliza una interfaz para que el programa detecte los atributos
+    //Sin la interfaz los atributos no se pueden llamar
     crearAsientos() {
         let genAsientos = [];
+        // Doble bucle para recorrer el multiarray (filas y columnas)
         for (let i = 0; i < 8; i++) {
             genAsientos[i] = [];
             for (let j = 0; j < 9; j++) {
@@ -78,15 +88,10 @@ class Cine {
                 };
             }
         }
+        // Devuelve el multiarray
         return genAsientos;
     }
-    generateEspectators(cantidad) {
-        let espectators = [];
-        for (let i = 0; i < cantidad; i++) {
-            espectators[i] = new Espectador();
-        }
-        return espectators;
-    }
+    // ========== GETTERS ==============
     getTituloPeli() {
         return this.peliculas.getTitulo();
     }
@@ -98,8 +103,5 @@ class Cine {
     }
     getEdadMinima() {
         return this.peliculas.getEdadMinima();
-    }
-    toString() {
-        this.peliculas.toString();
     }
 }
