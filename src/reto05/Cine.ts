@@ -31,6 +31,7 @@ class Cine{
         let permitir:boolean = false;
         let row=0;
         let col=0;
+        // Variables para tener registro de Espectadores que entran
         let plazasAsignadas=0;
         let espectadoresRechazados=0;
         let especAforoRechazado=0;
@@ -46,7 +47,7 @@ class Cine{
                     col = Math.floor(Math.random() * 8);
                     if (!this.asientos[col][row].ocupado){
                         this.asientos[col][row].ocupado = true;
-                        this.asientos[col][row].persona = this.espectadores[i].toString(); ;
+                        this.asientos[col][row].persona = this.espectadores[i].toString(); //<--Asigna los valores del Espectador sentado al Object asiento
                         pass=true;
                         plazasAsignadas++;
                         // console.log("Plaza asinada");

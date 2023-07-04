@@ -23,7 +23,7 @@ const createVisual = () => {
             let elemento = elementos[increment]; //Castea el Element a HTMLElemnt para poder cambiar los atributos sin problemas
             elemento.id = asientos[i][j].fila + asientos[i][j].letra; // Añade la ID del elemento HTML a partir de los atributos de asientos
             elemento.innerText = asientos[i][j].fila + asientos[i][j].letra; // Cambia el texto interno para se vea parecido al que se asigna a la ID
-            elemento.title = asientos[i][j].persona;
+            elemento.title = asientos[i][j].persona; //Añade como titulo flotante los datos del Espectador sentado
             increment++;
         }
     }
