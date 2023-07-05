@@ -1,14 +1,15 @@
 "use strict";
-/* type typeSexo = 'H' | 'M'; */
+const novillos = 50;
 class Estudiante extends Persona2 {
-    constructor(newEdadMinima, newEdadMaxima, materia) {
-        super(newEdadMinima, newEdadMaxima);
-        /* this.materia = new Materia();  */
-        this.calificacion = Math.floor(Math.random() * 10);
+    constructor(newNombre, newEdad, newSexo, newCalificacion) {
+        super(newNombre, newEdad, newSexo);
+        this.calificacion = newCalificacion;
+        this.asistencia = super.disponibilidadPersona(novillos);
     }
-    disponibilidadPersona() {
-        let random_numA = Math.floor(Math.random() * 5);
-        let random_numB = Math.floor(Math.random() * 5);
-        return random_numB === random_numA ? false : true;
+    getCalificacion() {
+        return this.calificacion;
+    }
+    getAsistencia() {
+        return this.asistencia;
     }
 }

@@ -1,13 +1,21 @@
 "use strict";
-/* type typeSexo = 'H' | 'M'; */
+const asistencia = 20;
 class Profesor extends Persona2 {
-    constructor(newEdadMinima, newEdadMaxima, materia) {
-        super(newEdadMinima, newEdadMaxima);
-        this.materia = materia;
+    constructor(newNombre, newEdad, newSexo, newMateria) {
+        super(newNombre, newEdad, newSexo);
+        this.asistencia = super.disponibilidadPersona(asistencia);
+        this.materia = newMateria;
     }
-    disponibilidadPersona() {
-        let random_numA = Math.floor(Math.random() * 5);
-        let random_numB = Math.floor(Math.random() * 5);
-        return random_numB === random_numA ? false : true;
+    setMateria(newMateria) {
+        this.materia = newMateria;
+    }
+    setAsistencia(newAsistencia) {
+        this.asistencia = newAsistencia;
+    }
+    getMateria() {
+        return this.materia;
+    }
+    getAsistencia() {
+        return this.asistencia;
     }
 }

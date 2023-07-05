@@ -1,8 +1,12 @@
 "use strict";
 class Materia {
-    constructor(nombre) {
-        this.nombre = nombre;
+    constructor() {
+        this.nombre = this.generarMateria();
     }
-    asignarMateria() { return ''; }
-    ;
+    generarMateria() {
+        let materias = ["Matemáticas", "Filosofía", "Física"];
+        let materia;
+        materia = materias[Math.floor(Math.random() * materias.length)];
+        return materia;
+    }
 }

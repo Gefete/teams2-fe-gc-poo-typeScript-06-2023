@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Aula de instituto</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row clase">
+            <!-- Div que recibirá la cantidad de alumnos asistentes y faltantes. Creo directamente un span con ID para 
+            imprimir lo que quiera dentro -->
+            <div class="col asistencia_alumnos">
+                <p>Alumnos asistentes: <span id="alumnos_asistentes"></span></p>
+                <p>Alumnos faltantes: <span id="alumnos_faltantes"></span></p>
+            </div>
+            <!-- A diferencia de en el anterior, para trabajar otras formas de modificar y crear elementos con typescript,
+            aquí no creo un span o p con ID para generarlo luego. Este div trabaja la materia que se da en la clase
+            y también muestra un mensaje si no se da clase -->
+            <div class="col seccion_pizarra">
+                <div id="pizarra">
+
+                </div>
+                <div id="mensaje_pizarra">
+                    
+                </div>
+            </div>
+            <!-- Este div muestra el nombre y materia que da el profesor -->
+            <div id="mesa_profesor" class="col">
+
+            </div>
+        </div>
+        <!-- El resto del código pinta la clase entera -->
+        <div class="row fila">
+            <!-- Cada plaza tiene dos divs. Pupitre dibuja una mesa y alumno muestra el nombre del alumno sentado en esa plaza -->
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+        </div>
+        <div class="row fila">
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+        </div>
+        <div class="row fila">
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+        </div>
+        <div class="row fila">
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+        </div>
+        <div class="row fila">
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+            <div class="plaza">
+                <div class="col pupitre"></div>
+                <div class="col alumno"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/reto04/Persona2.js"></script>
+    <script src="../../js/reto04/Estudiante.js"></script>
+    <script src="../../js/reto04/Profesor.js"></script>
+    <script src="../../js/reto04/Aula.js"></script>
+    <script src="../../js/reto04/main.js"></script>
+</body>
+</html>

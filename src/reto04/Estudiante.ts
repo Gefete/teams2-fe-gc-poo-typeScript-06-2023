@@ -1,17 +1,43 @@
-/* type typeSexo = 'H' | 'M'; */
-class Estudiante extends Persona2 {
-    /* private materia:Materia; */
-    private calificacion:number;
+// ===== CONSTANTES =====
+// La no asistencia de un alumno es del 50%
+const novillos = 50;
 
-    constructor(newEdadMinima: number, newEdadMaxima: number, materia:Materia){
-        super(newEdadMinima,newEdadMaxima);
-        /* this.materia = new Materia();  */
-        this.calificacion = Math.floor(Math.random()*10);
+class Estudiante extends Persona2 {
+
+    private calificacion: number;
+    private asistencia: boolean;
+
+    // ===== CONSTRUCTOR ======
+
+    constructor(newNombre: string, newEdad: number, newSexo: tiposSexo,
+        newCalificacion: number){
+
+        super(newNombre, newEdad, newSexo);
+        this.calificacion = newCalificacion;
+        this.asistencia = super.disponibilidadPersona(novillos);
     }
 
-    disponibilidadPersona():boolean {
-        let random_numA = Math.floor(Math.random()*5);
-        let random_numB = Math.floor(Math.random()*5);
-        return random_numB === random_numA ? false : true;
+    // ===== SETTERS ======
+
+    setCalificacion (newCalificacion: number) : void {
+
+        this.calificacion = newCalificacion;
+    }
+    
+    setAsistencia (newAsistencia: boolean) : void {
+
+        this.asistencia = newAsistencia;
+    }
+    
+    // ===== GETTERS ======
+
+    getCalificacion (): number {
+        
+        return this.calificacion;
+    }
+    
+    getAsistencia () : boolean {
+        
+        return this.asistencia;
     }
 }

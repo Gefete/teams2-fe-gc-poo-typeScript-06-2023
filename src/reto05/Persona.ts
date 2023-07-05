@@ -1,4 +1,5 @@
 class Persona {
+
     protected name:string;
     protected lastName:string;
 
