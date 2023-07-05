@@ -1,31 +1,41 @@
 "use strict";
 // ===== TIPOS Y CONSTANTES =====
 const materias = ["Matemáticas", "Filosofía", "Física"];
-// ===== VARIABLES NECESARIAS =====
+// ===== VARIABLES NECESARIAS PARA HACER CLASE =====
 let profesor;
 let estudiantes = new Array(30);
 let aula;
-// ===== VARIABLES PARA PROFESOR =====
+// ===== VARIABLES PARA CREAR PROFESOR =====
 let nombreProfesor;
 let edadProfesor;
 let sexoProfesor;
 let materiaProfesor;
-// ===== VARIABLES PARA ESTUDIANTE =====
+// ===== VARIABLES PARA CREAR ESTUDIANTES =====
 let nombreEstudiante;
 let edadEstudiante;
 let sexoEstudiante;
 let calificacionEstudiante;
 let contadorAsistentes = 0;
 let contadorFaltantes = 0;
-// ===== VARIABLE PARA AULA =====
+// ===== VARIABLE PARA CREAR AULA =====
 let aulaMateria;
-// =====  =====
+// ===== VARIABLES CON ELEMENTOS HTML QUE PINTAREMOS O MODIFICAREMOS =====
+// Creamos dos colecciones de nodos (Tiene muchas semejanzas con un array: método length
+// y se accede utilizando índices) que apuntan a las plazas de cada alumnot en el HTML
+// para luego pintar, o no, en el código)
 let alumnosElements = document.querySelectorAll(".alumno");
 let pupitresElements = document.querySelectorAll(".pupitre");
+// De esta forma, nos preparamos para crear el <p> dinámicamente
 let parrafoProfesor = document.createElement("p");
 let parrafoMateria = document.createElement("p");
 let parrafoMensaje = document.createElement("p");
-// ===== ASIGNAMOS VALOR A VARIABLES DE PROFESOR =====
+// De esta forma, apuntamos a un elemento HTML que en el futuro modificaremos
+let mostrarProfesor = document.getElementById("mesa_profesor");
+let mostrarMateria = document.getElementById("pizarra");
+let mostrarMensaje = document.getElementById("mensaje_pizarra");
+let mostrarAsistentes = document.getElementById("alumnos_asistentes");
+let mostrarFaltantes = document.getElementById("alumnos_faltantes");
+// ===== ASIGNAMOS VALOR ALEATORIO A VARIABLES DE PROFESOR Y CREAMOS EL OBJETO =====
 nombreProfesor = generarNombre();
 edadProfesor = generarEdad();
 sexoProfesor = generarSexo();
@@ -38,6 +48,8 @@ for (let i = 0; i < estudiantes.length; i++) {
     sexoEstudiante = generarSexo();
     calificacionEstudiante = generarCalificacion();
     estudiantes[i] = new Estudiante(nombreEstudiante, edadEstudiante, sexoEstudiante, calificacionEstudiante);
+    // Aprovechamos el for de la creación de estudiantes para contar la cantidad total
+    // de asistentes y faltantes.
     if (estudiantes[i].getAsistencia() == true) {
         contadorAsistentes++;
     }
@@ -47,40 +59,87 @@ for (let i = 0; i < estudiantes.length; i++) {
 }
 // ===== ASIGNAMOS UN VALOR A LA MATERIA DEL AULA =====
 aulaMateria = materias[Math.floor(Math.random() * materias.length)];
-let mostrarProfesor = document.getElementById("mesa_profesor");
-let mostrarMateria = document.getElementById("pizarra");
-let mostrarMensaje = document.getElementById("mensaje_pizarra");
-let mostrarAsistentes = document.getElementById("alumnos_asistentes");
-let mostrarFaltantes = document.getElementById("alumnos_faltantes");
+// VALORES ALEATORIOS CREADOS ANTERIORMENTE, MUESTRO LOS QUE PERMITEN, O NO, 
+// HACER CLASE: La materia que realiza el profesor, la materia que se da
+// en el aula y la cantidad de alumnos asistentes y faltantes
+// La primera línea agrega el <p> establecido anteriormente dentro del div 
+// con ID que se encuentra en la variable "mostrarProfesor".
+// La segunda modifica el contenido que muestra esa <p> con lo que queramos
 mostrarProfesor.appendChild(parrafoProfesor);
 parrafoProfesor.textContent = nombreProfesor + " (" + materiaProfesor + ")";
 mostrarMateria.appendChild(parrafoMateria);
 parrafoMateria.textContent = aulaMateria;
+// En este caso, al tener ya creado un span con el ID introducido en las variables
+// mostrarAsistentes y mostrarFaltantes, sólo tengo que asignarle el valor
+// y ya se muestra
 mostrarAsistentes.textContent = contadorAsistentes;
 mostrarFaltantes.textContent = contadorFaltantes;
-if (aulaMateria == materiaProfesor) {
+// COMPROBACIÓN PARA PINTAR, O NO, LA CLASE
+if ((aulaMateria == materiaProfesor) && ((contadorAsistentes / estudiantes.length) > 0.5)) {
     for (let i = 0; i < estudiantes.length; i++) {
         if (estudiantes[i].getAsistencia() == true) {
-            let alumnos = alumnosElements[i];
+            // Establezco las variables alumno, crearParrafo y pupitres
+            // La primera apunta al div con clase alumno de la posición i
+            // La segunda crea un <p> para añadirlo en el div anterior
+            // La tercera apunta al div con clase pupitre de la posición i
+            let alumno = alumnosElements[i];
             let crearParrafo = document.createElement("p");
-            let bgPupitres = pupitresElements[i];
+            let pupitres = pupitresElements[i];
+            // Asigna el valor del nombre del estudiante al <p> creado
             crearParrafo.textContent = estudiantes[i].getNombre();
-            alumnos.appendChild(crearParrafo);
-            bgPupitres.style.backgroundColor = "green";
+            // Y añade el <p> al div
+            alumno.appendChild(crearParrafo);
+            // Además, pinto el background del pupitre para que se vea que el alumno asiste
+            pupitres.style.backgroundColor = "green";
         }
         else {
-            let alumnos = alumnosElements[i];
+            let alumno = alumnosElements[i];
             let crearParrafo = document.createElement("p");
-            let bgPupitres = pupitresElements[i];
+            let pupitres = pupitresElements[i];
             crearParrafo.textContent = estudiantes[i].getNombre();
-            alumnos.appendChild(crearParrafo);
-            bgPupitres.style.backgroundColor = "red";
+            alumno.appendChild(crearParrafo);
+            pupitres.style.backgroundColor = "red";
         }
+    }
+    // MOSTRAMOS LOS ALUMN@S APROBADOS POR CONSOLA COMO SI DE UN MENSAJE DEL PROFESOR SE TRATARA
+    console.log("El profesor se levanta y empieza a hablar: ");
+    console.log("Las alumnas aprobadas son: ");
+    for (let i = 0; i < estudiantes.length; i++) {
+        if ((estudiantes[i].getSexo() == "Mujer") && (estudiantes[i].getCalificacion() >= 5)) {
+            console.log(estudiantes[i].getNombre() + "(" + estudiantes[i].getSexo() + ")" + " con un " + estudiantes[i].getCalificacion());
+        }
+    }
+    console.log("Los alumnos aprobados son: ");
+    for (let i = 0; i < estudiantes.length; i++) {
+        if ((estudiantes[i].getSexo() == "Hombre") && (estudiantes[i].getCalificacion() >= 5)) {
+            console.log(estudiantes[i].getNombre() + "(" + estudiantes[i].getSexo() + ")" + " con un " + estudiantes[i].getCalificacion());
+        }
+    }
+    // AÑADO ESTO ÚLTIMO PARA QUE SE PUEDA COMPROBAR QUE LO ANTERIOR ES CORRECTO
+    console.log("Pueden comprobar todas las notas en el siguiente mensaje: ");
+    for (let i = 0; i < estudiantes.length; i++) {
+        console.log(estudiantes[i].getNombre() + "(" + estudiantes[i].getSexo() + ")" + " con un " + estudiantes[i].getCalificacion());
     }
 }
 else {
-    mostrarMensaje.appendChild(parrafoMensaje);
-    parrafoMensaje.textContent = "El profesor se ha equivocado de clase";
+    // SI LA CONDICIÓN INICIAL NO SE HA CUMPLIDO, PINTO VISUALMENTE ELEMENTOS PARA QUE SE VEA MEJOR
+    // LA RAZÓN DE NO REALIZAR CLASE
+    if (aulaMateria != materiaProfesor) {
+        let resaltarMateriaAula = document.querySelector("#pizarra p");
+        let resaltarMateriaProfesor = document.querySelector("#mesa_profesor p");
+        resaltarMateriaAula.style.color = "red";
+        resaltarMateriaProfesor.style.color = "red";
+        mostrarMensaje.appendChild(parrafoMensaje);
+        parrafoMensaje.textContent = "El profesor se ha equivocado de clase";
+        parrafoMensaje.style.color = "red";
+    }
+    else {
+        let resaltarAlumnosFaltantes = document.querySelector(".asistencia_alumnos p");
+        resaltarAlumnosFaltantes.style.color = "red";
+        mostrarMensaje.appendChild(parrafoMensaje);
+        parrafoMensaje.textContent = "Faltan alumnos para hacer la clase";
+        parrafoMensaje.style.color = "red";
+    }
 }
 //  ====== FUNCIONES =====
 // He reutilizado el método creado en el reto02, pero le añado 2 apellidos

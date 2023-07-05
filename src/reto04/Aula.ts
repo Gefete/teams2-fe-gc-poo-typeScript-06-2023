@@ -1,3 +1,5 @@
+// ===== CONSTANTES ======
+// Establecemos el máximo de estudiantes del aula
 const maxEstudiantes: number = 30;
 
 class Aula{
@@ -12,6 +14,42 @@ class Aula{
         this.max_estudiantes = maxEstudiantes;
         this.materia_asignada = newMateria;
     }
+
+    // ===== SETTETS ======
+
+    setIdentificador (newIdentificador: number) : void {
+
+        this.identificador = newIdentificador;
+    } 
+
+    setMaxEstudiantes (newMax: number) : void {
+
+        this.max_estudiantes = newMax;
+    }
+
+    setMateria (newMateria: string) : void {
+
+        this.materia_asignada = newMateria;
+    }
+
+    // ===== GETTERS ======
+
+    getIdentificador () : number {
+
+        return this.identificador;
+    } 
+
+    getMaxEstudiantes () : number {
+
+        return this.max_estudiantes;
+    }
+
+    getMateria () : string {
+
+        return this.materia_asignada;
+    }
+
+    // ====== MÉTODOS ======
 
     generarIdentificador () : number{
 
