@@ -19,6 +19,7 @@ let contadorAsistentes = 0;
 let contadorFaltantes = 0;
 // ===== VARIABLE PARA CREAR AULA =====
 let aulaMateria;
+let maximoAlumnos;
 // ===== VARIABLES CON ELEMENTOS HTML QUE PINTAREMOS O MODIFICAREMOS =====
 // Creamos dos colecciones de nodos (Tiene muchas semejanzas con un array: método length
 // y se accede utilizando índices) que apuntan a las plazas de cada alumnot en el HTML
@@ -41,8 +42,12 @@ edadProfesor = generarEdad();
 sexoProfesor = generarSexo();
 materiaProfesor = materias[Math.floor(Math.random() * materias.length)];
 profesor = new Profesor(nombreProfesor, edadProfesor, sexoProfesor, materiaProfesor);
+// ===== ASIGNAMOS UN VALOR A LA MATERIA DEL AULA =====
+aulaMateria = materias[Math.floor(Math.random() * materias.length)];
+aula = new Aula(aulaMateria);
+maximoAlumnos = aula.getMaxEstudiantes();
 // ===== LLENAMOS ARRAY ESTUDIANTES CON ESTUDIANTES =====
-for (let i = 0; i < estudiantes.length; i++) {
+for (let i = 0; i < maximoAlumnos; i++) {
     nombreEstudiante = generarNombre();
     edadEstudiante = generarEdad();
     sexoEstudiante = generarSexo();
@@ -57,23 +62,21 @@ for (let i = 0; i < estudiantes.length; i++) {
         contadorFaltantes++;
     }
 }
-// ===== ASIGNAMOS UN VALOR A LA MATERIA DEL AULA =====
-aulaMateria = materias[Math.floor(Math.random() * materias.length)];
 // VALORES ALEATORIOS CREADOS ANTERIORMENTE, MUESTRO LOS QUE PERMITEN, O NO, 
 // HACER CLASE: La materia que realiza el profesor, la materia que se da
 // en el aula y la cantidad de alumnos asistentes y faltantes
 // La primera línea agrega el <p> establecido anteriormente dentro del div 
 // con ID que se encuentra en la variable "mostrarProfesor".
 // La segunda modifica el contenido que muestra esa <p> con lo que queramos
-mostrarProfesor.appendChild(parrafoProfesor);
+mostrarProfesor === null || mostrarProfesor === void 0 ? void 0 : mostrarProfesor.appendChild(parrafoProfesor);
 parrafoProfesor.textContent = nombreProfesor + " (" + materiaProfesor + ")";
-mostrarMateria.appendChild(parrafoMateria);
+mostrarMateria === null || mostrarMateria === void 0 ? void 0 : mostrarMateria.appendChild(parrafoMateria);
 parrafoMateria.textContent = aulaMateria;
 // En este caso, al tener ya creado un span con el ID introducido en las variables
 // mostrarAsistentes y mostrarFaltantes, sólo tengo que asignarle el valor
 // y ya se muestra
-mostrarAsistentes.textContent = contadorAsistentes;
-mostrarFaltantes.textContent = contadorFaltantes;
+mostrarAsistentes.textContent = "" + contadorAsistentes;
+mostrarFaltantes.textContent = "" + contadorFaltantes;
 // COMPROBACIÓN PARA PINTAR, O NO, LA CLASE
 if ((aulaMateria == materiaProfesor) && ((contadorAsistentes / estudiantes.length) > 0.5)) {
     for (let i = 0; i < estudiantes.length; i++) {
@@ -127,16 +130,16 @@ else {
     if (aulaMateria != materiaProfesor) {
         let resaltarMateriaAula = document.querySelector("#pizarra p");
         let resaltarMateriaProfesor = document.querySelector("#mesa_profesor p");
-        resaltarMateriaAula.style.color = "red";
-        resaltarMateriaProfesor.style.color = "red";
-        mostrarMensaje.appendChild(parrafoMensaje);
+        resaltarMateriaAula === null || resaltarMateriaAula === void 0 ? void 0 : resaltarMateriaAula.style.color = "red";
+        resaltarMateriaProfesor === null || resaltarMateriaProfesor === void 0 ? void 0 : resaltarMateriaProfesor.style.color = "red";
+        mostrarMensaje === null || mostrarMensaje === void 0 ? void 0 : mostrarMensaje.appendChild(parrafoMensaje);
         parrafoMensaje.textContent = "El profesor se ha equivocado de clase";
         parrafoMensaje.style.color = "red";
     }
     else {
         let resaltarAlumnosFaltantes = document.querySelector(".asistencia_alumnos p");
-        resaltarAlumnosFaltantes.style.color = "red";
-        mostrarMensaje.appendChild(parrafoMensaje);
+        resaltarAlumnosFaltantes === null || resaltarAlumnosFaltantes === void 0 ? void 0 : resaltarAlumnosFaltantes.style.color = "red";
+        mostrarMensaje === null || mostrarMensaje === void 0 ? void 0 : mostrarMensaje.appendChild(parrafoMensaje);
         parrafoMensaje.textContent = "Faltan alumnos para hacer la clase";
         parrafoMensaje.style.color = "red";
     }

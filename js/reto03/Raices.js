@@ -42,13 +42,7 @@ class Raices {
     tieneRaiz() {
         return this.getDiscriminante() === 0 ? true : false;
     }
-    //Metodos Gerard
-    /*  • calcular(): mostrara por consola las posibles soluciones que tiene nuestra ecuación, en caso
-        de no existir solución, mostrarlo también.
-        • obtenerRaices(): imprime las 2 posibles soluciones
-        • obtenerRaiz(): imprime única raíz, que será cuando solo tenga una solución posible.
-        Formula ecuación 2º grado: (-b±√((b^2)-(4*a*c)))/(2*a)
-        Solo varia el signo delante de -b */
+    // Metodo que coge los metodos obtenerRaices y obtenerRaiz segun los metodos tieneRaices o tieneRaiz lo indique
     calcular() {
         if (this.tieneRaices()) {
             this.obtenerRaices();
@@ -60,6 +54,7 @@ class Raices {
             console.log("no tiene solucion");
         }
     }
+    // Metodo que calcula las 2 soluciones de la equaciones 2n grado
     obtenerRaices() {
         if (this.tieneRaices()) {
             let operacion2nGradopositive = (-this.b + Math.sqrt((Math.pow(this.b, 2)) - (4 * this.a * this.c))) / (2 * this.a);
@@ -71,6 +66,7 @@ class Raices {
             console.log("solo tiene una solucion");
         }
     }
+    //  Metodo que calcula la solucion de la equaciones 2n grado en caso de que solo salga una segun el discriminante
     obtenerRaiz() {
         if (this.tieneRaiz()) {
             let operacion2nGradon = (-this.b - Math.sqrt((Math.pow(this.b, 2)) - (4 * this.a * this.c))) / (2 * this.a);

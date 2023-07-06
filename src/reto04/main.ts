@@ -94,17 +94,17 @@ for (let i = 0; i < maximoAlumnos; i++) {
 // La primera línea agrega el <p> establecido anteriormente dentro del div 
 // con ID que se encuentra en la variable "mostrarProfesor".
 // La segunda modifica el contenido que muestra esa <p> con lo que queramos
-mostrarProfesor.appendChild(parrafoProfesor);
+mostrarProfesor?.appendChild(parrafoProfesor);
 parrafoProfesor.textContent = nombreProfesor+" ("+materiaProfesor+")";
 
-mostrarMateria.appendChild(parrafoMateria);
+mostrarMateria?.appendChild(parrafoMateria);
 parrafoMateria.textContent = aulaMateria;
 
 // En este caso, al tener ya creado un span con el ID introducido en las variables
 // mostrarAsistentes y mostrarFaltantes, sólo tengo que asignarle el valor
 // y ya se muestra
-mostrarAsistentes.textContent = contadorAsistentes;
-mostrarFaltantes.textContent = contadorFaltantes;
+mostrarAsistentes.textContent = ""+contadorAsistentes;
+mostrarFaltantes.textContent = ""+contadorFaltantes;
 
 // COMPROBACIÓN PARA PINTAR, O NO, LA CLASE
 
@@ -179,19 +179,19 @@ if((aulaMateria == materiaProfesor) && ((contadorAsistentes/estudiantes.length) 
         let resaltarMateriaAula = document.querySelector("#pizarra p");
         let resaltarMateriaProfesor = document.querySelector("#mesa_profesor p");
 
-        resaltarMateriaAula.style.color = "red";
-        resaltarMateriaProfesor.style.color = "red";
+        resaltarMateriaAula?.style.color = "red";
+        resaltarMateriaProfesor?.style.color = "red";
 
-        mostrarMensaje.appendChild(parrafoMensaje);
+        mostrarMensaje?.appendChild(parrafoMensaje);
         parrafoMensaje.textContent = "El profesor se ha equivocado de clase";
         parrafoMensaje.style.color = "red";
     }else{
         
         let resaltarAlumnosFaltantes = document.querySelector(".asistencia_alumnos p");
 
-        resaltarAlumnosFaltantes.style.color = "red";
+        resaltarAlumnosFaltantes?.style.color = "red";
 
-        mostrarMensaje.appendChild(parrafoMensaje);
+        mostrarMensaje?.appendChild(parrafoMensaje);
         parrafoMensaje.textContent = "Faltan alumnos para hacer la clase";
         parrafoMensaje.style.color = "red";
     }
